@@ -10,7 +10,13 @@ public class Promotion {
 
     private int promotionId;
     private List<PromotionItem> promotionItemList = new ArrayList<>();
+    /**
+     * promotionPrice indicates final promotion price for a bundle after applying all discount.
+     */
     private double promotionPrice;
+    /**
+     * promotionDiscount indicates total discount given for a bundle by considering difference between promotion price and original bundle price.
+     */
     private float promotionDiscount;
 
     /**

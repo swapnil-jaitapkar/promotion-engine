@@ -97,8 +97,8 @@ public class SKUManagerImplTest {
     public void getSKUTest() {
         SKU a = skuManager.getSKU('A');
         Assert.assertNotNull(a);
-        Assert.assertEquals('A',a.getName());
-        Assert.assertEquals(50,a.getPrice(),0);
+        Assert.assertEquals('A', a.getName());
+        Assert.assertEquals(50, a.getPrice(), 0);
     }
 
     /**
