@@ -145,7 +145,35 @@ public class PromotionManagerImplTest {
         comparePromotionLists(expectedPromotionList, actualPromotionList);
     }
 
-    /*@Test
-    void removePromotion() {
-    }*/
+    /**
+     * Test case to verify the error handling logic when trying to add promotion for SKU which is not available.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void addPromotionForUnavailableSKUTest() {
+        List<PromotionItem> newPromotionItemList = new ArrayList<>();
+        newPromotionItemList.add(new PromotionItem('E', 2));
+        Promotion newPromotion = new Promotion(4, newPromotionItemList, 35d);
+        promotionMannager.addPromotion(newPromotion);
+    }
+
+    /**
+     * Test case to verify if remove promotion functionality is working and changes are persisted.
+     */
+    @Test
+    public void removePromotionTest() {
+        promotionMannager.removePromotion(3);
+        List<Promotion> actualPromotionList = promotionMannager.getAllPromotions();
+        List<Promotion> expectedPromotionList = new ArrayList<>();
+        List<PromotionItem> promotionItemList1 = new ArrayList<>();
+        promotionItemList1.add(new PromotionItem('A', 3));
+        Promotion promotion1 = new Promotion(1, promotionItemList1, 130d);
+        promotion1.setPromotionDiscount(13.33f);
+        List<PromotionItem> promotionItemList2 = new ArrayList<>();
+        promotionItemList2.add(new PromotionItem('B', 2));
+        Promotion promotion2 = new Promotion(2, promotionItemList2, 45d);
+        promotion2.setPromotionDiscount(25f);
+        expectedPromotionList.add(promotion1);
+        expectedPromotionList.add(promotion2);
+        comparePromotionLists(expectedPromotionList, actualPromotionList);
+    }
 }

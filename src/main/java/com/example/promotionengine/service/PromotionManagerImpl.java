@@ -62,9 +62,14 @@ public class PromotionManagerImpl implements PromotionManager {
         //TODO:- Invalid promotion as both disount and promotion price are not present so it wont be added. Further enhancements exception Can be thrown.
     }
 
+    /**
+     * Method to remove a specific promotion based on promotion id.
+     *
+     * @param promotionId Id of promotion to be removed.
+     */
     @Override
     public void removePromotion(int promotionId) {
-
+        promotionList.removeIf(promotion -> promotion.getPromotionId() == promotionId);
     }
 
     /**
