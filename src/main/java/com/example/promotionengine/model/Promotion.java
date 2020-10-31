@@ -1,5 +1,7 @@
 package com.example.promotionengine.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,16 +10,24 @@ import java.util.List;
  */
 public class Promotion {
 
+    @JsonProperty("promotionId")
     private int promotionId;
+    @JsonProperty("promotionItemList")
     private List<PromotionItem> promotionItemList = new ArrayList<>();
     /**
      * promotionPrice indicates final promotion price for a bundle after applying all discount.
      */
+    @JsonProperty("promotionPrice")
     private double promotionPrice;
     /**
      * promotionDiscount indicates total discount given for a bundle by considering difference between promotion price and original bundle price.
      */
+    @JsonProperty("promotionDiscount")
     private float promotionDiscount;
+
+    public Promotion() {
+        super();
+    }
 
     /**
      * Overloaded constructor to cover promotions where there is special discount during a promotion for a specific promotion item.
