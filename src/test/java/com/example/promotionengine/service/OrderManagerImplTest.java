@@ -33,4 +33,29 @@ public class OrderManagerImplTest {
         double v = orderManager.calculateOrderValue(order);
         Assert.assertEquals(v, 100, 0);
     }
+
+    /**
+     * Test case to calculate order value where no promotions are applicable and one of SKU is not present.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void calculateOrderValueWithoutPromotionsWhenSKUIsNotPresentTest() {
+        List<OrderItem> orderItemList = new ArrayList<>();
+        orderItemList.add(new OrderItem('A', 1));
+        orderItemList.add(new OrderItem('B', 1));
+        orderItemList.add(new OrderItem('E', 1));
+        Order order = new Order(orderItemList);
+        double v = orderManager.calculateOrderValue(order);
+    }
+
+    /**
+     * Test case to calculate order value where no promotions are applicable.
+     */
+    @Test
+    public void calculateOrderValueWithoutPromotionsTest2() {
+        List<OrderItem> orderItemList = new ArrayList<>();
+        orderItemList.add(new OrderItem('C', 10));
+        Order order = new Order(orderItemList);
+        double v = orderManager.calculateOrderValue(order);
+        Assert.assertEquals(v, 200, 0);
+    }
 }
