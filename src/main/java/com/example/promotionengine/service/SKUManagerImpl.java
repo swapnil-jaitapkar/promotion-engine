@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of SKUManager interface. Implemented logic to provide functionality to get specific or all SKU's and add or remove SKU's.
@@ -49,8 +50,19 @@ public class SKUManagerImpl implements SKUManager {
         return skuList;
     }
 
+
+    /**
+     * Method to return SKU for specific SKU name.
+     *
+     * @param skuName Name of SKU to be returned.
+     * @return is the SKU matching input skuName.
+     */
     @Override
     public SKU getSKU(char skuName) {
-        return null;
+        List<SKU> listOfSKU = skuList.stream().filter(sku -> sku.getName() == skuName).collect(Collectors.toList());
+        if (!listOfSKU.isEmpty()) {
+            return listOfSKU.get(0);
+        } else
+            return null;
     }
 }

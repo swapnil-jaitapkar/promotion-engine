@@ -90,10 +90,25 @@ public class SKUManagerImplTest {
         compareSKULists(expectedSKUList, actualSKUList);
     }
 
-    /*
+    /**
+     * Test case to verify functionality to get specific SKU based on SKU name.
+     */
     @Test
-    void getSKU() {
-    }*/
+    public void getSKUTest() {
+        SKU a = skuManager.getSKU('A');
+        Assert.assertNotNull(a);
+        Assert.assertEquals('A',a.getName());
+        Assert.assertEquals(50,a.getPrice(),0);
+    }
+
+    /**
+     * Test case to verify functionality to get specific SKU based on SKU name which is not present in SKU list.
+     */
+    @Test
+    public void getUnavailableSKUTest() {
+        SKU e = skuManager.getSKU('E');
+        Assert.assertNull(e);
+    }
 
 
     private void compareSKULists(List<SKU> expectedSKUList, List<SKU> actualSKUList) {
