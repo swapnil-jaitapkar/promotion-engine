@@ -29,9 +29,14 @@ public class SKUManagerImpl implements SKUManager {
         skuList.add(sku);
     }
 
+    /**
+     * Method to remove specific SKU from the list.
+     *
+     * @param skuName Name of SKU to be removed.
+     */
     @Override
     public void removeSKU(char skuName) {
-
+        skuList.removeIf(sku -> sku.getName() == skuName);
     }
 
     /**

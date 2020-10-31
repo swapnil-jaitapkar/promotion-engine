@@ -60,13 +60,37 @@ public class SKUManagerImplTest {
         compareSKULists(expectedSKUList, actualSKUList);
     }
 
-
-
-    /*
+    /**
+     * Test case to verify functionality to remove SKU from the list.
+     */
     @Test
-    void getAllSKU() {
+    public void removeSKUTest() {
+        skuManager.removeSKU('C');
+        List<SKU> actualSKUList = skuManager.getAllSKU();
+        List<SKU> expectedSKUList = new ArrayList<>();
+        expectedSKUList.add(new SKU('A', 50));
+        expectedSKUList.add(new SKU('B', 30));
+        expectedSKUList.add(new SKU('D', 15));
+        compareSKULists(expectedSKUList, actualSKUList);
     }
 
+    /**
+     * Test case to verify functionality to add and remove SKU is working together.
+     */
+    @Test
+    public void addAndRemoveSKUTest() {
+        skuManager.addSKU(new SKU('E', 60));
+        skuManager.removeSKU('C');
+        List<SKU> actualSKUList = skuManager.getAllSKU();
+        List<SKU> expectedSKUList = new ArrayList<>();
+        expectedSKUList.add(new SKU('A', 50));
+        expectedSKUList.add(new SKU('B', 30));
+        expectedSKUList.add(new SKU('D', 15));
+        expectedSKUList.add(new SKU('E', 60));
+        compareSKULists(expectedSKUList, actualSKUList);
+    }
+
+    /*
     @Test
     void getSKU() {
     }*/
