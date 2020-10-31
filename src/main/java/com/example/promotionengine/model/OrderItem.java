@@ -20,4 +20,13 @@ public class OrderItem {
     public int getUnit() {
         return unit;
     }
+
+    /**
+     * Method to reduce units after promotion is successfully applied.
+     *
+     * @param unitsToReduce Number of units to reduce.
+     */
+    public void reduceUnits(int unitsToReduce) {
+        this.unit -= unitsToReduce;
+    }
 }

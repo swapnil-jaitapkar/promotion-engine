@@ -4,6 +4,7 @@ import com.example.promotionengine.model.Promotion;
 import com.example.promotionengine.model.PromotionItem;
 import com.example.promotionengine.model.SKU;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Implementation of PromotionManager interface. Implemented logic to provide functionality to get specific or all Promotions and add or remove Promotions.
  */
+@Service
 public class PromotionManagerImpl implements PromotionManager {
 
     private List<Promotion> promotionList = new ArrayList<>();
