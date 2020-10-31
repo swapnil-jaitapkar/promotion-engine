@@ -25,4 +25,24 @@ public class PromotionEngineControllerImpl implements PromotionEngineController 
     public List<Promotion> getAllActivePromotions() {
         return promotionManager.getAllPromotions();
     }
+
+    /**
+     * REST API to add new promotion.
+     *
+     * @param promotion Promotion to be added.
+     */
+    @Override
+    public void addPromotion(Promotion promotion) {
+        promotionManager.addPromotion(promotion);
+    }
+
+    /**
+     * REST API to remove promotion.
+     *
+     * @param promotionId Id of promotion to be removed.
+     */
+    @Override
+    public void removePromotion(int promotionId) {
+        promotionManager.removePromotion(promotionId);
+    }
 }
