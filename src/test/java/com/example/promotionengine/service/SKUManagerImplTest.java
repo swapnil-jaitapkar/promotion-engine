@@ -29,6 +29,10 @@ public class SKUManagerImplTest {
         skuManager = null;
     }
 
+
+    /**
+     * Test case to verify if some default SKUs are added during initialization and verify if getAllSKU method is working correctly
+     */
     @Test
     public void getAllSKUTest() {
         List<SKU> actualSKUList = skuManager.getAllSKU();
@@ -40,10 +44,25 @@ public class SKUManagerImplTest {
         compareSKULists(expectedSKUList, actualSKUList);
     }
 
-    /*@Test
-    void removeSKU() {
+    /**
+     * Test case to verify functionality to verify addition of new SKU and to check if the changes are persisted.
+     */
+    @Test
+    public void addSKUTest() {
+        skuManager.addSKU(new SKU('E', 60));
+        List<SKU> actualSKUList = skuManager.getAllSKU();
+        List<SKU> expectedSKUList = new ArrayList<>();
+        expectedSKUList.add(new SKU('A', 50));
+        expectedSKUList.add(new SKU('B', 30));
+        expectedSKUList.add(new SKU('C', 20));
+        expectedSKUList.add(new SKU('D', 15));
+        expectedSKUList.add(new SKU('E', 60));
+        compareSKULists(expectedSKUList, actualSKUList);
     }
 
+
+
+    /*
     @Test
     void getAllSKU() {
     }
@@ -51,6 +70,7 @@ public class SKUManagerImplTest {
     @Test
     void getSKU() {
     }*/
+
 
     private void compareSKULists(List<SKU> expectedSKUList, List<SKU> actualSKUList) {
         Assert.assertEquals(expectedSKUList.size(), actualSKUList.size());

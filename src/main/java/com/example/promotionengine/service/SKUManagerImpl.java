@@ -26,7 +26,7 @@ public class SKUManagerImpl implements SKUManager {
 
     @Override
     public void addSKU(SKU sku) {
-
+        skuList.add(sku);
     }
 
     @Override
